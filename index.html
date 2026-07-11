@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Tu tienda online de confianza. Encuentra los mejores productos al mejor precio.">
+    <meta name="keywords" content="e-commerce, tienda, compras, tecnologia, ropa">
+    <title>Mi E-Commerce Dinámico</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #0b0f19;
+            color: #e2e8f0;
+            margin: 0;
+            padding: 0;
+        }
+
+        .navbar-custom {
+            background-color: #111827;
+            border-bottom: 2px solid #06b6d4;
+        }
+
+        .logo-text {
+            font-weight: 700;
+            background: linear-gradient(to right, #ffffff, #06b6d4);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .nav-custom-link {
+            font-weight: 400;
+            font-size: 0.95rem;
+            position: relative;
+        }
+
+        .nav-custom-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 8px;
+            background-color: #06b6d4;
+            transition: width 0.3s ease;
+        }
+
+        .nav-custom-link:hover::after {
+            width: 80%;
+        }
+
+        .nav-custom-link:hover {
+            color: #06b6d4 !important;
+        }
+
+        .btn-cart-custom {
+            background-color: #1f2937;
+            color: #06b6d4;
+            border: 1px solid #06b6d4;
+            padding: 0.6rem 1rem;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-cart-custom:hover {
+            background-color: #06b6d4;
+            color: #111827;
+            box-shadow: 0 0 12px rgba(6, 182, 212, 0.4);
+        }
+
+        .badge-cart {
+            background-color: #06b6d4 !important;
+            color: #111827 !important;
+            font-weight: 700;
+        }
+
+        .hero-section {
+            background: linear-gradient(135deg, #111827 0%, #032535 100%);
+            border: 1px solid #1f2937;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .text-light-custom {
+            color: #94a3b8;
+        }
+
+        .btn-hero-action {
+            background-color: #06b6d4;
+            color: #111827;
+            border-radius: 6px;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .btn-hero-action:hover {
+            background-color: #22d3ee;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(6, 182, 212, 0.4);
+            color: #111827;
+        }
+
+        .section-title {
+            font-weight: 700;
+            color: #ffffff;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background-color: #06b6d4;
+            border-radius: 2px;
+        }
+
+        .card {
+            background-color: #111827 !important;
+            border: 1px solid #1f2937 !important;
+            border-radius: 12px !important;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+            overflow: hidden;
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+            border-color: #06b6d4 !important;
+            box-shadow: 0 12px 24px rgba(6, 182, 212, 0.15);
+        }
+
+        .card-title {
+            color: #ffffff;
+            font-size: 1rem;
+            font-weight: 600;
+        }
+
+        .card-text {
+            color: #06b6d4;
+            font-size: 1.15rem;
+        }
+
+        .card img {
+            background-color: #ffffff;
+            border-bottom: 1px solid #1f2937;
+            transition: transform 0.3s ease;
+        }
+
+        .add-to-cart-btn {
+            background-color: #1f2937 !important;
+            border: 1px solid #374151 !important;
+            color: #ffffff !important;
+            transition: all 0.2s ease !important;
+        }
+
+        .add-to-cart-btn:hover {
+            background-color: #06b6d4 !important;
+            border-color: #06b6d4 !important;
+            color: #111827 !important;
+            font-weight: 600;
+        }
+
+        .reviews-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+        }
+
+        .review-card {
+            background-color: #111827;
+            padding: 25px;
+            border-radius: 12px;
+            border: 1px solid #1f2937;
+            border-top: 4px solid #06b6d4;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .review-card p {
+            font-style: italic;
+            color: #94a3b8;
+        }
+
+        .review-card span {
+            display: block;
+            font-weight: 600;
+            color: #06b6d4;
+            text-align: right;
+        }
+
+        .stars {
+            color: #f59e0b;
+            font-size: 0.85rem;
+        }
+
+        .contact-container {
+            background-color: #111827;
+            padding: 40px;
+            border-radius: 12px;
+            border: 1px solid #1f2937;
+        }
+
+        .form-input-custom {
+            background-color: #1f2937 !important;
+            border: 1px solid #374151 !important;
+            color: #ffffff !important;
+        }
+
+        .btn-submit-custom {
+            background-color: #06b6d4;
+            color: #111827;
+            border: none;
+        }
+
+        .btn-submit-custom:hover {
+            background-color: #22d3ee;
+        }
+
+        .modal-custom {
+            background-color: #111827 !important;
+            border: 1px solid #06b6d4 !important;
+        }
+
+        .text-cyan {
+            color: #06b6d4;
+        }
+
+        .footer-custom {
+            background-color: #090d16;
+            border-top: 1px solid #1f2937;
+        }
+
+        @media (max-width: 576px) {
+            .contact-container {
+                padding: 25px;
+                margin: 0 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="navbar-custom py-3 sticky-top">
+        <div class="container d-flex justify-content-between align-items-center">
+            <h1 class="h3 m-0 logo-text">🛍️ MegaShop</h1>
+            <nav>
+                <ul class="nav">
+                    <li class="nav-item"><a class="nav-link text-white nav-custom-link" href="#inicio">Inicio</a></li>
+                    <li class="nav-item"><a class="nav-link text-white nav-custom-link" href="#productos">Productos</a></li>
+                    <li class="nav-item"><a class="nav-link text-white nav-custom-link" href="#resenas">Reseñas</a></li>
+                    <li class="nav-item"><a class="nav-link text-white nav-custom-link" href="#contacto">Contacto</a></li>
+                </ul>
+            </nav>
+            <button class="btn btn-cart-custom position-relative" data-bs-toggle="modal" data-bs-target="#cartModal" aria-label="Ver carrito de compras">
+                <i class="fas fa-shopping-cart"></i>
+                <span id="cart-counter" class="position-absolute top-0 start-100 translate-middle badge rounded-pill badge-cart">0</span>
+            </button>
+        </div>
+    </header>
+
+    <main class="container my-5">
+        <section id="inicio" class="mb-5 text-center hero-section p-5 rounded">
+            <h2 class="display-5 fw-bold text-white mb-3">La Revolución del Digital Shopping</h2>
+            <p class="lead text-light-custom mx-auto" style="max-width: 600px;">Descubrí una selección exclusiva de productos importados con envíos bonificados a todo el país y financiación sin interés.</p>
+            <div class="mt-4">
+                <a href="#productos" class="btn btn-hero-action px-4 py-2 fw-bold">Explorar Catálogo</a>
+            </div>
+        </section>
+
+        <section id="productos" class="mb-5">
+            <h2 class="text-center mb-5 section-title">Nuestros Productos</h2>
+            <div id="products-container" class="d-flex flex-wrap justify-content-center gap-4"></div>
+        </section>
+
+        <section id="resenas" class="mb-5">
+            <h2 class="text-center mb-5 section-title">Opiniones de la Comunidad</h2>
+            <div class="reviews-grid">
+                <div class="review-card">
+                    <div class="stars mb-2"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                    <p>"Excelente calidad y llegó súper rápido. Totalmente recomendado."</p>
+                    <span>— Juan Pérez</span>
+                </div>
+                <div class="review-card">
+                    <div class="stars mb-2"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                    <p>"El soporte al cliente me resolvió una duda al toque. De 10 la atención."</p>
+                    <span>— María G.</span>
+                </div>
+                <div class="review-card">
+                    <div class="stars mb-2"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i></div>
+                    <p>"Buenas ofertas, precios competitivos y la página es sumamente fluida."</p>
+                    <span>— Lucas M.</span>
+                </div>
+            </div>
+        </section>
+
+        <section id="contacto" class="mb-5">
+            <h2 class="text-center mb-5 section-title">Ponete en Contacto</h2>
+            <div class="contact-container mx-auto" style="max-width: 500px;">
+                <form id="contact-form" action="https://formspree.io/f/TU_ID_DE_FORMSPREE" method="POST">
+                    <div class="mb-3">
+                        <label for="name" class="form-label fw-bold">Nombre Completo</label>
+                        <input type="text" name="name" id="name" class="form-control form-input-custom" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="email" class="form-label fw-bold">Correo Electrónico</label>
+                        <input type="email" name="email" id="email" class="form-control form-input-custom" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="message" class="form-label fw-bold">Mensaje</label>
+                        <textarea name="message" id="message" rows="4" class="form-control form-input-custom" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-submit-custom w-100 fw-bold py-2">Enviar Mensaje</button>
+                    <div id="form-message" class="mt-2 text-center"></div>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <div class="modal fade" id="cartModal" tabindex="-1" aria-labelledby="cartModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content modal-custom">
+                <div class="modal-header border-secondary">
+                    <h5 class="modal-title text-white" id="cartModalLabel">Tu Carrito</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body text-white">
+                    <ul id="cart-items" class="list-group mb-3"></ul>
+                    <div class="d-flex justify-content-between fw-bold fs-5 pt-2 border-top border-secondary">
+                        <span>Total:</span>
+                        <span id="cart-total" class="text-cyan">$0.00</span>
+                    </div>
+                </div>
+                <div class="modal-footer border-secondary">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Seguir comprando</button>
+                    <button type="button" class="btn btn-submit-custom text-dark fw-bold" id="checkout-btn">Finalizar Compra</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer-custom text-center py-4 mt-5">
+        <p class="m-0 text-muted">&copy; 2026 MegaShop. Todos los derechos reservados. Diseñado para proyecto final.</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/script.js"></script>
+</body>
+</html>
