@@ -141,6 +141,21 @@ document.getElementById('checkout-btn').addEventListener('click', () => {
     modal.hide();
 });
 
+document.getElementById('contact-form').addEventListener('submit', (e) => {
+    e.preventDefault();
+    
+    const form = document.getElementById('contact-form');
+    const messageDiv = document.getElementById('form-message');
+    
+    messageDiv.innerHTML = `<p class="text-success fw-bold m-0 mt-3">¡Mensaje enviado con éxito! Nos comunicaremos a la brevedad.</p>`;
+    
+    form.reset();
+    
+    setTimeout(() => {
+        messageDiv.innerHTML = '';
+    }, 5000);
+});
+
 document.addEventListener('DOMContentLoaded', () => {
     fetchProducts();
     updateCart();

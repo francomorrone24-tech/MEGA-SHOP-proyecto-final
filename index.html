@@ -305,7 +305,7 @@
         <section id="contacto" class="mb-5">
             <h2 class="text-center mb-5 section-title">Ponete en Contacto</h2>
             <div class="contact-container mx-auto" style="max-width: 500px;">
-                <form id="contact-form" action="https://formspree.io/f/TU_ID_DE_FORMSPREE" method="POST">
+               <form id="contact-form">
                     <div class="mb-3">
                         <label for="name" class="form-label fw-bold">Nombre Completo</label>
                         <input type="text" name="name" id="name" class="form-control form-input-custom" required>
@@ -318,7 +318,7 @@
                         <label for="message" class="form-label fw-bold">Mensaje</label>
                         <textarea name="message" id="message" rows="4" class="form-control form-input-custom" required></textarea>
                     </div>
-                    <button type="submit" class="btn btn-submit-custom w-100 fw-bold py-2">Enviar Mensaje</button>
+                    <button type="button" onclick="document.getElementById('contact-form').dispatchEvent(new Event('submit'))" class="btn btn-submit-custom w-100 fw-bold py-2">Enviar Mensaje</button>
                     <div id="form-message" class="mt-2 text-center"></div>
                 </form>
             </div>
